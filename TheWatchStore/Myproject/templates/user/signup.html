@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+      .signup
+    {
+    min-height:500px;
+    font-size:14px;
+    }
+    .form-control
+    {
+    margin-bottom:8px;
+    font-size:14px;
+    }
+    .txta
+    {
+    min-height:90px;
+    }
+
+</style>
+<div class="row bg-light">
+    <div class="h2 text-center">Sign<b style="color: #039be5"> Up <i class="fas fa-user-plus"></i> </b></div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 signup p-5 bg-info mb-4">
+        <form method="post" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}<!-- cross site reforgery-->
+            Name *<input type="text" name="name" placeholder="Enter Your Name..." class="form-control" required>
+            Mobile *<input type="text" name="mobile" placeholder="Enter Your Mobile No...." class="form-control"
+                         required>
+            E-mail *<input type="email" name="email" placeholder="Enter Your E-mail..." class="form-control"
+                         required>
+            Date Of Birth *<input type="date" name="DOB" placeholder="DD/MM/YYYY" class="form-control"
+                                required/>
+            Password *<input type="password" name="passwd" class="form-control" placeholder="Enter Your Password.."
+                           required>
+            Profile Picture *<input type="file" class="form-control" name="fu" required>
+            Address *<textarea class="form-control txta" name="address" style="..."
+                             placeholder="Enter Your Address..."></textarea>
+            <input type="submit" value="save" class="w-100 btn btn-danger">
+        </form>
+         <div class="text-center mt-2 fs-6">existing costumar?<a href="/user/signin" style="text-decoration:none;"><b>Sign In</b></a></div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+{% endblock %}

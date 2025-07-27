@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row bg-light">
+    <div class="h2 text-center">My <b style="color: #039be5;">Orders <i class="fas fa-shopping-bag"></i></b> </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10" style="min-height:250px;">
+        <table class="table table-scripted">
+            <tr>
+                <th>Picture</th>
+                <th>Product Name</th>
+                <th>Product Category</th>
+                <th>Description</th>
+                <th>Total Price</th>
+                <th>Discounted Price</th>
+                <th>Cancel</th>
+                <th>Remarks</th>
+                <th>Order Date</th>
+            </tr>
+            {% if pendingorder %}
+            {% for x in pendingorder %}
+            <tr>
+                <td><img src="/{{x.8}}" class="img-thumbnail" style="max-height: 100px;"/></td>
+                <td>{{x.7}}
+                <td>{{x.14}}</td>
+                <td>{{x.12}}</td>
+                <td><i class="btn btn-outline-danger"><s>{{x.10}}</s></i></td>
+                <td><i class="btn btn-outline-success">{{x.11}}</i></td>
+                <td><a href="/user/myorders?oid={{x.0}}" class="btn btn-danger">Cancel</a></td>
+                <td><a href="#" class="btn btn-primary">Delivered</a></td>
+                <td>{{x.5}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+{% endblock %}

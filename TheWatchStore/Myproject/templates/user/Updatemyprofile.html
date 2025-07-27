@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row bg-light">
+    <h2 class="text-center">Update <b class="text-primary">Profile<i class="fab fa-user"></i> </b></h2>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-12">
+                    Name *<input required type="text" name="name" class="form-control" placeholder="Enter Your Name..."/>
+                    Update Photo *<input required type="file" name="userpic" class="form-control"/>
+                    Date Of Birth *<input required type="date" value="yyyy-mm-dd" name="dob" class="form-control" placeholder="Enter Your Date Of Birth..."/>
+                    Mobile No. *<input type="number" required name="mobile" class="form-control" placeholder="Enter Your Mobile No..."/>
+                    Password *<input required type="password" name="password" class="form-control" placeholder="Enter Your Password..."/>
+                    Address *<textarea required class="form-control" name="address" placeholder="Enter Your Address..."></textarea>
+                    <br/>
+                    <input type="submit" value="Update" class="btn btn-primary mb-4 form-control"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+{% endblock %}

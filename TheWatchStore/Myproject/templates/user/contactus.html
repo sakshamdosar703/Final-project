@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .form-control
+    {
+    margin-bottom: 8px;
+    }
+
+</style>
+<div class="row contact bg-light">
+    <center>
+        <div class="h2 p-4">Contact<b style="color: #039be4;"> Us <i class="fa fa-phone"></i></b></div>
+    </center>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 mb-5 bg-info">
+        <div class="row">
+            <div class="col-sm-12 p-4">
+                <form method="post">
+                    {% csrf_token %}<!-- cross site reforgery -->
+
+                    {% if ds %}
+                    <div class="row message bg-warning" style="">Thanks for Enquiry...</div>
+                    {% endif %}
+                    Name<input type="text" name="name" placeholder="Enter Your Name..." class="form-control" required>
+                    Mobile<input type="text" name="mobile" placeholder="Enter Your Mobile No...." class="form-control"
+                                 required>
+                    E-mail<input type="email" name="email" placeholder="Enter Your E-mail..." class="form-control"
+                                 required>
+                    Message<textarea class="form-control" name="msg" placeholder="Enter Your Message..."
+                                     required></textarea>
+                    <input type="submit" value="save" class="w-100 btn btn-danger">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+{% endblock %}

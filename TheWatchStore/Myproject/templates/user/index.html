@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- start slider -->
+<div class="row slider">
+    <div class="col-sm-12">
+
+        <div id="carouselExampleCaptions" class="carousel slide pt-5" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5"
+                        aria-label="Slide 6"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'Images/a4.jpg' %}" style="max-height: 650px;" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'Images/a5.jpg' %}" style="max-height: 650px;" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'Images/a6.jpg' %}" style="max-height: 650px;" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'Images/a7.jpg' %}" style="max-height: 650px;" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Fourth slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'Images/a8.jpg' %}" style="max-height: 650px;" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Fifth slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'Images/a9.jpg' %}" style="max-height: 650px;" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Sixth slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+<!-- end slider -->
+
+<!-- start category -->
+<div class="row category">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <!-- start category -->
+        <div class="row">
+            {% if data %}
+            {% for x in data %}
+            <div class="col-sm-2 m-3">
+                <div class="row">
+                    <div class="col-sm-12 " style="min-width: 200px;">
+                        <div class="card w-100">
+                            <img src="/{{x.cpic}}" style="min-width: 180px" class="img-thumbnail"/>
+                            <div class="h6 text-center fs-5">{{x.cname}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <!-- end category -->
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+<!-- end category -->
+
+<!-- start newproduct -->
+<div class="row newproduct py-2 bg-light">
+    <div class="h2 text-center">Our New <b style="color: #039ae4;">Product<i class="fab fa-product-hunt"></i></b></div>
+    <div class="col-sm-12">
+        <div class="row">
+            {% if proddata %}
+            {% for x in proddata %}
+            <div class="col-sm-2">
+                <div class="card w-100">
+                    <img src="/{{x.ppic}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" >{{x.pcategory}}</h5>
+                        <p class="fs-6">{{x.name}}</p>
+                        <div style="height: 30px; width: 30px; border-radius: 50%; background: {{x.color}};"></div>
+                        <b>Rs. : </b> <s style="color: red;">{{x.tprice}}/-</s> <b>{{x.disprice}}/-</b><br/>
+                        <a href="/user/viewdetails?msg={{x.id}}" class="btn btn-primary rounded-pill">Buy Now</a>
+                        <a href="/user/process?pid={{x.id}}&bn=cart" target="_blank" style="float:right;"
+                           class="btn btn-primary rounded-pill"><i class="fa fa-shopping-cart"></i> Cart</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!-- end newproduct -->
+{% endblock %}
+
+{% block co %}
+welcome
+{% endblock %}

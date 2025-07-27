@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .form-control
+    {
+    margin-bottom: 10px;
+    }
+</style>
+<div class="row bg-light">
+    <div class="h2 text-center">Sign<b style="color: #039be5;"> In <i class="fas fa-sign-in-alt"></i> </b> </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 p-5 mb-5 bg-info">
+        <form method="post"  enctype="multipart/form-data">
+            {% csrf_token %}
+            E-mail<input type="email" name="email" class="form-control" required placeholder="Enter your email...">
+            Password<input type="password" name="password" class="form-control" required placeholder="Enter your password..."><br/>
+            <input type="submit" value="Log In" class="btn btn-danger">
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+{% endblock %}
